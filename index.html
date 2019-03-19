@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body id="game">
+    <span>Les lignes : </span>
+    <input type="text" name="row" id="row" placeholder="les lignes"><br>
+    <span>Les colonnes : </span>
+    <input type="text" name="col" id="col" placeholder="les colonnes"><br>
+    <button onclick="afficher()">Afficher tableau</button>
+    <br>
+    <div id="out"></div>
+
+    <script>
+        function makeTable(l,c){
+            var table = '<table id="tab">';
+            for(i=0;i<l;i++){
+                table += '<tr>';
+                for(j=0;j<c;j++){
+                    table += '<td class="game-card" onclick="colorer(this)" ></td>';
+                }
+                table += '</td>';
+            }
+            table += '</table>';
+            return table;
+        }
+
+        function afficher(){
+            let row = document.querySelector('#row').value;
+            let col = document.querySelector('#col').value;
+            document.querySelector('#out').innerHTML = makeTable(row,col);
+        }
+
+        function colorer(td){
+            rgb1 = Math.random() * 255
+            rgb2 = Math.random() * 255
+            rgb3 = Math.random() * 255
+
+            td.style.background = "rgb("+rgb1+","+rgb2+","+rgb3+")"
+        }
+    </script>
+    
+</body>
+</html>
